@@ -3,20 +3,29 @@
 \docType{data}
 \name{tumors}
 \alias{tumors}
-\title{Tumor data}
+\title{Tumor Data}
 \format{A list of two items:
 \describe{
-  \item{Y}{Matrix of 356 continuous gene expression measurements for 43 tumors.}
-  \item{class}{Vector giving tumor type for each tumor represented in \code{Y}}
+  \item{\code{Y}}{Matrix of 356 continuous gene expression measurements for 43 tumors.}
+  \item{\code{class}}{Vector giving tumor type for each tumor represented in \code{Y}}
   ...
 }}
 \source{
-\url{https://github.com/julierennes/denoiseR}
+Data constructed as follows from the \code{denoiseR} package (\url{https://github.com/julierennes/denoiseR}): \cr
+\code{library(devtools)} \cr
+\code{install_github("julierennes/denoiseR")} \cr
+\code{library(denoiseR)} \cr
+\code{data(tumors)} \cr
+\code{Y <- as.matrix(tumors[order(tumors[, ncol(tumors)]), -ncol(tumors)])} \cr
+\code{class <- tumors[order(tumors[, ncol(tumors)]), ncol(tumors)]} \cr
+\code{tumors <- list("Y" = Y, "class" = class)}
 }
 \usage{
-tumors
+\code{data(tumors)} \cr
+\code{Y <- tumors[["Y"]]} \cr
+\code{class <- tumors[["class"]]}
 }
 \description{
-A dataset containing gene expression data for 43 tumors.
+A dataset containing gene expression data for 43 tumors
 }
 \keyword{datasets}
