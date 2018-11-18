@@ -1,3 +1,8 @@
+#' Function for soft thresholding
+#' @export
+softt<-function(x,lambda){ sign(x)*pmax(abs(x)-lambda/2,0) }
+
+
 #' Function for estimating unknown mean parameters
 #'
 #' \code{estM} uses block coordinate descent to obtain a
@@ -8,8 +13,6 @@
 #' @return A list of unknown mean parameter estimates.
 #' @export
 estM <-function(Y, ett, tol=1e-7) {
-
-  softt<-function(x,lambda){ sign(x)*pmax(abs(x)-lambda/2,0) }
 
   if (length(dim(Y)) == 2) {
 
